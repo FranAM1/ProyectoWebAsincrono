@@ -1,25 +1,38 @@
+*{
+    box-sizing: border-box;
+}
+
 body {
     display: grid;
-    grid-template-columns: 500px 100vw;
-    grid-template-rows: 1fr 1fr 100vh;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 5% 1fr 1fr 1fr;
+    padding: 1rem;
 }
 
 form {
-    width: 400px;
-    grid-row: 2/3;
+    width: 300px;
+    grid-area: 2 / 1 / 3 / 2;
+    align-self: center;
+    justify-self: center;
 }
 
-fieldset {
-    display: flex;
-    gap: 5px;
+h1{
+    font-size: 3rem;
+    grid-area: 1 / 1 / 2 / 2;
+    align-self: center;
+    justify-self: center;
 }
+
+
 
 #nombre {
     width: 100px;
 }
 
 #GALACTUS {
-    grid-row: 3/4;
+    justify-self: center;
+    align-self: center;
+    grid-row: 3/5;
 }
 
 .inputNumero {
@@ -39,8 +52,7 @@ fieldset {
 }
 
 .card:hover{
-    width: 400px;
-    height: 600px;
+    box-shadow: red 0px 14px 28px, red 0px -12px 30px, red 0px 4px 6px, red 0px 12px 13px, red 0px -3px 5px;
 }
 
 .card > img{
@@ -85,4 +97,16 @@ fieldset {
     background-color: red;
     color: white;
     font-size: 20px;
+}
+
+#zonaBusquedaCartas{
+    grid-area: 1 / 2 / 2 / 3;
+    align-self: center;
+    justify-self: center;
+}
+
+#zonaMostrarCartas{
+    grid-area: 2 / 2 / 5 / 3;
+    border: 2px solid black;
+    border-radius: 5px;
 }
