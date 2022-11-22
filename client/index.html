@@ -30,7 +30,7 @@
         </fieldset>
     </form>
     <!-- Estructura carta + galactus (borrar todo)-->
-    <div id="GALACTUS" class="card">
+    <div id="GALACTUS" class="card" onclick="deleteAll()">
         <img src="https://gcdn.lanetaneta.com/wp-content/uploads/2022/04/Como-Eternals-configura-a-Galactus-como-el-proximo-Thanos-de.jpg">
         <h2>GALACTUS</h2>
         <p><b>Onclick: </b><br>Borra todas las otras cartas</p>
@@ -45,6 +45,22 @@
     <div id="zonaMostrarCartas">
         
     </div>
+    <form id="formModificar">
+        <label for="imagenURL">URL imagen: </label>
+        <input type="text" id="imagenURL">
+        <br><br>
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre">
+        <br><br>
+        <label for="ataque">Ataque: </label>
+        <input type="number" id="ataque" class="inputNumero">
+
+        <label for="vida">Vida: </label>
+        <input type="number" id="vida" class="inputNumero">
+        </div>
+        <br><br>
+        <button type="button" id="botonModificar">Enviar</button>
+    </form>
     <script src="./script.js"></script>
 </body>
 </html>

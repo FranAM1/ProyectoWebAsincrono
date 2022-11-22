@@ -1,4 +1,4 @@
-const URL = "http://localhost:3000/cartas"
+const URL = "http://localhost:3000/cartas/"
 
 
 function imprimirDatos(data){
@@ -8,7 +8,7 @@ function imprimirDatos(data){
         <div class="card">
         <img src=${carta.imagenURL}>
         <h2>${carta.nombre}</h2>
-        <p><button onclick='modificarCarta(${carta.id})'>Modificar</button><button onclick='borrarCarta(${carta.id})'>Borrar</button></p>
+        <p>Funciones: <button onclick='modificarCarta(${carta.id})'>Modificar</button><button onclick='deleteOne(${carta.id})'>Borrar</button></p>
         <div class="ataque">${carta.ataque}</div>
         <div class="vida">${carta.vida}</div>
         </div>
@@ -104,4 +104,30 @@ function postCard(){
         .then(data => console.log(data))
 }
 
+function deleteAll(){
+    fetch(URL)
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(e => {
+                deleteOne(e.id)
+            })
+        })
+
+    
+}
+
+function deleteOne(id){
+    fetch(URL+id, {
+        method: 'DELETE'
+    })
+        .then(res => res.json())
+        .then(data => console.log(data))
+}
+
+function modificarCarta(){
+
+}
+
 getAll(URL)
+
+

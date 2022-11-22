@@ -1,18 +1,16 @@
 {
-  "cartas": [
-    {
-      "id": 1,
-      "imagenURL": "https://i.pinimg.com/474x/26/13/d2/2613d2bf113d294f8dc489e51ebc7179.jpg",
-      "nombre": "Miles Morales",
-      "ataque": 50,
-      "vida": 50
-    },
-    {
-      "id": 2,
-      "imagenURL": "https://cdn.discordapp.com/attachments/780806875251343412/1044633025385865286/image.png",
-      "nombre": "Venom",
-      "ataque": 100,
-      "vida": 100
-    }
-  ]
+  "cartas": [{
+    "id": 1,
+    "imagenURL": "https://i.pinimg.com/474x/26/13/d2/2613d2bf113d294f8dc489e51ebc7179.jpg",
+    "nombre": "Miles Morales",
+    "ataque": 50,
+    "vida": 50
+  },
+  {
+    "id": 2,
+    "imagenURL": "https://cdn.discordapp.com/attachments/780806875251343412/1044633025385865286/image.png",
+    "nombre": "Venom",
+    "ataque": 100,
+    "vida": 100
+  }]
 }
