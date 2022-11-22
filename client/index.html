@@ -13,6 +13,9 @@
         <fieldset>
             <legend>Añadir carta</legend>
             <br>
+            <label for="imagenURL">URL imagen: </label>
+            <input type="text" id="imagenURL">
+            <br><br>
             <label for="nombre">Nombre: </label>
             <input type="text" id="nombre">
             <br><br>
@@ -37,10 +40,11 @@
     <div id="zonaBusquedaCartas">
         <label for="nombreBusqueda">Busqueda por nombre: </label>
         <input type="text" name="nombreBusqueda" id="nombreBusqueda" placeholder="Buscar carta...">
-        <button type="button">Buscar</button>
+        <button type="button" id="botonBuscar" onclick="getOne()">Buscar</button>
     </div>
     <div id="zonaMostrarCartas">
         
     </div>
+    <script src="./script.js"></script>
 </body>
 </html>
