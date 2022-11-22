@@ -39,8 +39,15 @@ function buscarNombre(data, nombreCarta){
 }
 
 
-function getAll(url){
-    fetch(url)
+
+function borrarVisualmente(){
+    document.getElementById("zonaMostrarCartas").innerHTML = ""
+}
+
+
+
+function getAll(){
+    fetch(URL)
         .then(res => res.json())
         .then(data => {
             imprimirDatos(data)
@@ -73,10 +80,28 @@ function getOne(){
         
 }
 
-function borrarVisualmente(){
-    document.getElementById("zonaMostrarCartas").innerHTML = ""
+function postCard(){
+    let urlImagen = document.getElementById("imagenURL").value
+    let nombre = document.getElementById("nombre").value
+    let ataque = document.getElementById("ataque").value
+    let vida = document.getElementById("vida").value
+
+    carta = {
+        imagenURL: urlImagen,
+        nombre: nombre,
+        ataque: ataque,
+        vida: vida
+    }
+
+    fetch(URL, {
+        method: 'POST',
+        body: JSON.stringify(carta),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+    })
+        .then(res => res.json())
+        .then(data => console.log(data))
 }
-
-
 
 getAll(URL)
