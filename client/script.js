@@ -8,7 +8,7 @@ function imprimirDatos(data){
         <div class="card">
         <img src=${carta.imagenURL}>
         <h2>${carta.nombre}</h2>
-        <p>Funciones: <button onclick='modificarCarta(${carta.id})'>Modificar</button><button onclick='deleteOne(${carta.id})'>Borrar</button></p>
+        <p>Funciones: <button onclick='abrirModificar(${carta.id})'>Modificar</button><button onclick='deleteOne(${carta.id})'>Borrar</button></p>
         <div class="ataque">${carta.ataque}</div>
         <div class="vida">${carta.vida}</div>
         </div>
@@ -124,10 +124,39 @@ function deleteOne(id){
         .then(data => console.log(data))
 }
 
-function modificarCarta(){
-
-}
-
 getAll(URL)
 
+function cerrarModificar(){
+    document.getElementById("formModificar").className = "ocultar";
+    document.getElementById("overlayModificar").className = "ocultar";
+}
+
+function abrirModificar(id){
+    document.getElementById("formModificar").className = "formularioModificar";
+    document.getElementById("overlayModificar").className = "overlay";
+    document.getElementById("idModificando").value = id
+}
+
+
+/*
+
+{
+    Cartas basica por si se borran con galactus
+  {
+    "id": 1,
+    "imagenURL": "https://i.pinimg.com/474x/26/13/d2/2613d2bf113d294f8dc489e51ebc7179.jpg",
+    "nombre": "Miles Morales",
+    "ataque": 50,
+    "vida": 50
+  },
+  {
+    "id": 2,
+    "imagenURL": "https://cdn.discordapp.com/attachments/780806875251343412/1044633025385865286/image.png",
+    "nombre": "Venom",
+    "ataque": 100,
+    "vida": 100
+  }
+}
+
+*/
 

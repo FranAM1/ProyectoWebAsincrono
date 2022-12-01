@@ -127,7 +127,6 @@ h1{
 }
 
 .overlay{
-    display: none;
     width: 100%;
     height: 100%;
     background-color: black;
@@ -137,7 +136,6 @@ h1{
 }
 
 .formularioModificar{
-    display: none;
     width: 40%;
     height: 50%;
     background-color: white;
@@ -145,5 +143,14 @@ h1{
     z-index: 2;
     justify-self: center;
     align-self: center;
-    border: 3px solid black
+    border: 3px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ocultar{
+    display: none;
 }

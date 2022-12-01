@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <h1>Marvel Cards</h1>
     <form>
@@ -31,7 +33,8 @@
     </form>
     <!-- Estructura carta + galactus (borrar todo)-->
     <div id="GALACTUS" class="card" onclick="deleteAll()">
-        <img src="https://gcdn.lanetaneta.com/wp-content/uploads/2022/04/Como-Eternals-configura-a-Galactus-como-el-proximo-Thanos-de.jpg">
+        <img
+            src="https://gcdn.lanetaneta.com/wp-content/uploads/2022/04/Como-Eternals-configura-a-Galactus-como-el-proximo-Thanos-de.jpg">
         <h2>GALACTUS</h2>
         <p><b>Onclick: </b><br>Borra todas las otras cartas</p>
         <div class="ataque">1000</div>
@@ -43,10 +46,29 @@
         <button type="button" id="botonBuscar" onclick="getOne()">Buscar</button>
     </div>
     <div id="zonaMostrarCartas"></div>
-    <div class="overlay"></div>
-    <div class="formularioModificar">
-        
+    <div class="overlay" id="overlayModificar"></div>
+    <div class="formularioModificar" id="formModificar">
+        <input type="hidden" value="" id="idModificando">
+        <div>
+            <label for="imagenURL">URL imagen: </label>
+            <input type="text" id="imagenURL">
+        </div>
+        <div>
+            <label for="nombre">Nombre: </label>
+            <input type="text" id="nombre">
+        </div>
+        <div>
+            <label for="ataque">Ataque: </label>
+            <input type="number" id="ataque" class="inputNumero">
+        </div>
+        <div>
+            <label for="vida">Vida: </label>
+            <input type="number" id="vida" class="inputNumero">
+        </div>
+        <button type="button">Modificar</button>
+        <button type="button" onclick="cerrarModificar()">Cancelar</button>
     </div>
     <script src="./script.js"></script>
 </body>
+
 </html>
