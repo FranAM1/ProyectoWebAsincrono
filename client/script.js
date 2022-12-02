@@ -46,41 +46,36 @@ function borrarVisualmente(){
 
 
 
-function getAll(){
-    fetch(URL)
-        .then(res => res.json())
-        .then(data => {
-            imprimirDatos(data)
-        })
-        .catch(e => {
-            console.log("Error en el fetch "+e)
-        })
+async function getAll(){
+    const response = await fetch(URL);
+    const data = await response.json();
+    imprimirDatos(data)
 }
 
+getAll(URL).catch(e => "Error al obtener las cartas "+e)
 
-function getOne(){
+async function getOne(){
     let nombreCarta = document.getElementById("nombreBusqueda").value
 
     if(nombreCarta != ""){
-        fetch(URL)
-            .then(res => res.json())
-            .then(data =>{
-                let numeroCarta = buscarNombre(data, nombreCarta)
-                if(numeroCarta < data.length){
-                    borrarVisualmente()
-                    imprimirDatos([data[numeroCarta]])
-                }
-                
-            })
+        const response = await fetch(URL)
+        const data = await response.json()
+
+        let numeroCarta = buscarNombre(data, nombreCarta)
+        if(numeroCarta < data.length){
+            borrarVisualmente()
+            imprimirDatos([data[numeroCarta]])
+        }
     }else{
         borrarVisualmente()
-        getAll(URL)
+        getAll(URL).catch(error => "Error en el else del getOne: "+error)
     }
     
         
 }
 
-function postCard(){
+
+async function postCard(){
     let urlImagen = document.getElementById("imagenURL").value
     let nombre = document.getElementById("nombre").value
     let ataque = document.getElementById("ataque").value
@@ -93,38 +88,66 @@ function postCard(){
         vida: vida
     }
 
-    fetch(URL, {
+    const response = await fetch(URL, {
         method: 'POST',
         body: JSON.stringify(carta),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         }
     })
-        .then(res => res.json())
-        .then(data => console.log(data))
+    const data = response.json()
+
+    console.log(data)
 }
 
-function deleteAll(){
-    fetch(URL)
-        .then(res => res.json())
-        .then(data => {
-            data.forEach(e => {
-                deleteOne(e.id)
-            })
-        })
-
-    
-}
-
-function deleteOne(id){
-    fetch(URL+id, {
+// Funcion para borrar solo una carta
+async function deleteOne(id){
+    const response = await fetch(URL+id, {
         method: 'DELETE'
-    })
-        .then(res => res.json())
-        .then(data => console.log(data))
+    });
+    const data = await response.json();
+
+    console.log(data)
 }
 
-getAll(URL)
+// Funcion para borrar todas las cartas que llama a la anterior funcion
+async function deleteAll(){
+    const response = await fetch(URL)
+    const data = await response.json()
+
+    data.forEach(e => {
+        deleteOne(e.id).catch(error => "Error al borrar "+error)
+    })
+}
+
+async function putCard(){
+    let id = document.getElementById("idModificando").value
+    let urlImagen = document.getElementById("imagenURLModificar").value
+    let nombre = document.getElementById("nombreModificar").value
+    let ataque = document.getElementById("ataqueModificar").value
+    let vida = document.getElementById("vidaModificar").value
+
+    carta = {
+        imagenURL: urlImagen,
+        nombre: nombre,
+        ataque: ataque,
+        vida: vida
+    }
+
+    const response = await fetch(URL+id,{
+        method: 'PUT',
+        body: JSON.stringify(carta),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+    })
+    const data = response.json()
+    
+    console.log(data)
+}
+
+
+// Funciones no relacionadas con la api
 
 function cerrarModificar(){
     document.getElementById("formModificar").className = "ocultar";
@@ -135,13 +158,14 @@ function abrirModificar(id){
     document.getElementById("formModificar").className = "formularioModificar";
     document.getElementById("overlayModificar").className = "overlay";
     document.getElementById("idModificando").value = id
+    document.getElementById("nombreCartaModificar").innerHTML = document.getElementsByTagName("h2")[id].innerHTML
 }
 
 
 /*
 
 {
-    Cartas basica por si se borran con galactus
+    Cartas basica por si se borran con galactus y hay que volver a ponerlos para probar
   {
     "id": 1,
     "imagenURL": "https://i.pinimg.com/474x/26/13/d2/2613d2bf113d294f8dc489e51ebc7179.jpg",

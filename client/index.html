@@ -46,26 +46,27 @@
         <button type="button" id="botonBuscar" onclick="getOne()">Buscar</button>
     </div>
     <div id="zonaMostrarCartas"></div>
-    <div class="overlay" id="overlayModificar"></div>
-    <div class="formularioModificar" id="formModificar">
+    <div class="ocultar" id="overlayModificar"></div>
+    <div class="ocultar" id="formModificar">
         <input type="hidden" value="" id="idModificando">
+        <h1 id="nombreCartaModificar"></h1>
         <div>
-            <label for="imagenURL">URL imagen: </label>
-            <input type="text" id="imagenURL">
+            <label for="imagenURLModificar">URL imagen: </label>
+            <input type="text" id="imagenURLModificar">
         </div>
         <div>
-            <label for="nombre">Nombre: </label>
-            <input type="text" id="nombre">
+            <label for="nombreModificar">Nombre: </label>
+            <input type="text" id="nombreModificar">
         </div>
         <div>
-            <label for="ataque">Ataque: </label>
-            <input type="number" id="ataque" class="inputNumero">
+            <label for="ataqueModificar">Ataque: </label>
+            <input type="number" id="ataqueModificar" class="inputNumero">
         </div>
         <div>
-            <label for="vida">Vida: </label>
-            <input type="number" id="vida" class="inputNumero">
+            <label for="vidaModificar">Vida: </label>
+            <input type="number" id="vidaModificar" class="inputNumero">
         </div>
-        <button type="button">Modificar</button>
+        <button type="button" onclick="putCard()">Modificar</button>
         <button type="button" onclick="cerrarModificar()">Cancelar</button>
     </div>
     <script src="./script.js"></script>
