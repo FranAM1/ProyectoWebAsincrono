@@ -115,9 +115,9 @@ async function deleteAll(){
     const response = await fetch(URL)
     const data = await response.json()
 
-    data.forEach(e => {
+    for(let e of data){
         deleteOne(e.id).catch(error => "Error al borrar "+error)
-    })
+    }
 }
 
 async function putCard(){
